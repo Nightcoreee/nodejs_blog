@@ -8,6 +8,11 @@ const {engine} = require('express-handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+const route = require('./routes/');
+
 //HTTP logger
 app.use(morgan('combined'));
 
@@ -17,12 +22,6 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
 
-app.get('/', (req, res) => {
-  res.render('home');
-});
-
-app.get('/news', (req, res) => {
-  res.render('news');
-});
+route(app);
 
 app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
