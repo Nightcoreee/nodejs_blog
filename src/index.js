@@ -13,11 +13,11 @@ app.use(express.json());
 const route = require('./routes/');
 
 //HTTP logger
-        app.use(morgan('combined'));
+app.use(morgan('combined'));
 
 //Template engine setup
-    app.engine('hbs', engine({ extname: '.hbs' }));
-    app.set('view engine', 'hbs');
+app.engine('hbs', engine({ extname: '.hbs' }));
+app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
 route(app);
