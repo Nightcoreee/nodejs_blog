@@ -1,22 +1,39 @@
 {
-  "name": "api_nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "nodemon --inspect src/index.js",
-    "listen": "node-sass --watch src/resource/scss/ -o src/public/css/",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^5.1.0"
-  },
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "node-sass": "^9.0.0",
-    "nodemon": "^3.1.10"
-  }
+    "name": "api_nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.js",
+    "scripts": {
+        "beautifull": "lint-staged",
+        "start": "nodemon --inspect src/index.js",
+        "listen": "node-sass --watch src/resource/scss/ -o src/public/css/",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^5.1.0"
+    },
+    
+    "lint-staged": {
+        "*.{js,json,scss}": [
+            "prettier --write --single-quote --trailing-comma all --tab-width 4"
+        ]
+    },
+
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+
+    "devDependencies": {
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.1",
+        "morgan": "^1.10.0",
+        "node-sass": "^9.0.0",
+        "nodemon": "^3.1.10",
+        "prettier": "^3.6.2"
+    }
 }
