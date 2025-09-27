@@ -15,11 +15,9 @@
     "dependencies": {
         "express": "^5.1.0"
     },
-    
+
     "lint-staged": {
-        "*.{js,json,scss}": [
-            "prettier --write --single-quote --trailing-comma all --tab-width 4"
-        ]
+        "src/**/*.{js,json,scss}": "prettier --write --single-quote --trailing-comma all --tab-width 4"
     },
 
     "husky": {
