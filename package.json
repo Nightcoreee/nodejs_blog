@@ -13,7 +13,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^5.1.0"
+        "express": "^5.1.0",
+        "mongoose": "^8.18.2"
     },
     "lint-staged": {
         "src/**/*.{js,json,scss}": "prettier --write --single-quote --trailing-comma all --tab-width 4"
@@ -25,7 +26,6 @@
     },
     "devDependencies": {
         "@arkweid/lefthook": "^0.7.7",
-        "husky": "^4.3.8",
         "lint-staged": "^16.2.1",
         "morgan": "^1.10.0",
         "node-sass": "^9.0.0",

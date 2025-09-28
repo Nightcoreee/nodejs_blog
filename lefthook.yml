@@ -2,36 +2,46 @@
 # Refer for explanation to following link:
 # https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
 #
-# pre-push:
-#   commands:
-#     packages-audit:
-#       tags: frontend security
-#       run: yarn audit
-#     gems-audit:
-#       tags: backend security
-#       run: bundle audit
-#
-# pre-commit:
+
+# Chạy trước khi commit, thường để kiểm tra chất lượng code:
+#   Format code (Prettier)
+#   Lint (ESLint)
+#   Kiểm tra style (Stylelint, nếu có)
+#   Kiểm tra types (TypeScript)
+################################
+#pre-commit:
 #   parallel: true
 #   commands:
+#     prettier:
+#       glob: "*.{js,ts,json,scss,css,md}"
+#       run: npx prettier --write {staged_files}
 #     eslint:
 #       glob: "*.{js,ts}"
-#       run: yarn eslint {staged_files}
-#     rubocop:
-#       tags: backend style
-#       glob: "*.rb"
-#       exclude: "application.rb|routes.rb"
-#       run: bundle exec rubocop --force-exclusion {all_files}
-#     govet:
-#       tags: backend style
-#       files: git ls-files -m
-#       glob: "*.go"
-#       run: go vet {files}
-#   scripts:
-#     "hello.js":
-#       runner: node
-#     "any.go":
-#       runner: go run
+#       run: npx eslint {staged_files}
+
+################################
+#Dùng để kiểm tra message commit (theo chuẩn Conventional Commit, ví dụ feat:, fix:, …)
+# commit-msg:
+#   commands:
+#     commitlint:
+#       run: npx commitlint --edit {1}
+
+################################
+
+# Chạy trước khi push code lên remote, thường để đảm bảo code “không hỏng”:
+#   Build project
+#   Chạy test
+#   Kiểm tra security (npm audit, snyk, …)
+# pre-push:
+#   parallel: false
+#   commands:
+#     build:
+#       run: npm run build
+#     test:
+#       run: npm test
+#     security:
+#       run: npm audit --production
+
 skip_sync: husky 
 skip_output:
   - meta
