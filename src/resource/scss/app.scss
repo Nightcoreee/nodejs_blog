@@ -3,3 +3,69 @@
 .card-course-item {
     margin-top: 15px;
 }
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+/* khối bên trái (col-lg-3) */
+.col-lg-3 {
+    background: #f8f9fa; /* nền xám nhạt */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* nút học ngay */
+.col-lg-3 button {
+    background-color: #007bff; /* xanh dương Bootstrap */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.col-lg-3 button:hover {
+    background-color: #0056b3; /* xanh đậm hơn khi hover */
+}
+
+/* danh sách thông tin khoá học */
+.col-lg-3 ul {
+    list-style: none; /* bỏ dấu chấm mặc định */
+    padding: 0;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.col-lg-3 li {
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+
+/* khối bên phải (col-lg-9) */
+.col-lg-9 {
+    padding: 20px;
+}
+
+.col-lg-9 h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.col-lg-9 iframe {
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.col-lg-9 p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+}
