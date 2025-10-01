@@ -10,7 +10,7 @@
 
 /* khối bên trái (col-lg-3) */
 .col-lg-3 {
-    background: #f8f9fa; /* nền xám nhạt */
+    background: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -18,7 +18,7 @@
 
 /* nút học ngay */
 .col-lg-3 button {
-    background-color: #007bff; /* xanh dương Bootstrap */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 6px;
@@ -29,12 +29,12 @@
 }
 
 .col-lg-3 button:hover {
-    background-color: #0056b3; /* xanh đậm hơn khi hover */
+    background-color: #0056b3;
 }
 
 /* danh sách thông tin khoá học */
 .col-lg-3 ul {
-    list-style: none; /* bỏ dấu chấm mặc định */
+    list-style: none;
     padding: 0;
     margin-top: 15px;
     text-align: left;
