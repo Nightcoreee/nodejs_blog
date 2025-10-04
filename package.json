@@ -14,7 +14,8 @@
     "license": "ISC",
     "dependencies": {
         "express": "^5.1.0",
-        "mongoose": "^8.18.2"
+        "mongoose": "^8.18.2",
+        "mongoose-slug-generator": "^1.0.4"
     },
     "lint-staged": {
         "src/**/*.{js,json,scss}": "prettier --write --single-quote --trailing-comma all --tab-width 4"

@@ -3,27 +3,27 @@
     <form method="POST" action="/courses/store">
         <div class="mb-3">
             <label for="name" class="form-label">Tên môn học</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name" name="name" required>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Mô tả môn học</label>
-            <input type="text" class="form-control" id="description">
+            <input type="text" class="form-control" id="description" name="description">
         </div>
 
         <div class="mb-3">
             <label for="videoID" class="form-label">Mã video</label>
-            <input type="text" class="form-control" id="videoID">
+            <input type="text" class="form-control" id="videoID" name="videoID" required>
         </div>
 
         <div class="mb-3">
-            <label for="level" class="form-label">Tên môn học</label>
-            <input type="text" class="form-control" id="level">
+            <label for="level" class="form-label">Trình độ</label>
+            <input type="text" class="form-control" id="level" name="level">
         </div>
 
         <div class="mb-3">
             <label for="totalTime" class="form-label">Số giờ học</label>
-            <input type="text" class="form-control" id="totalTime">
+            <input type="text" class="form-control" id="totalTime" name="totalTime">
         </div>
         
         <button type="submit" class="btn btn-primary">Thêm khóa học</button>
