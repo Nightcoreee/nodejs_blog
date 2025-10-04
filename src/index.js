@@ -6,9 +6,10 @@ const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 const route = require('./routes/');
 const db = require('./config/db');
+const methodOverride = require('method-override');
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -19,7 +20,16 @@ db.connect();
 app.use(morgan('combined'));
 
 //Template engine setup
-app.engine('hbs', engine({ extname: '.hbs' }));
+app.engine(
+    'hbs',
+    engine({
+        extname: '.hbs',
+        helpers: {
+            sum: (a, b) => a + b,
+        },
+    }),
+);
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
