@@ -1,6 +1,6 @@
 <div class="mt-4">
-    <h3>📖DANH SÁCH KHÓA HỌC ĐÃ XÓA</h3>
-    <a href="/me/stored/courses" style="font-size: 20px">🔙Quay lại danh sách khóa học</a>
+    <h3 class="text-center">📖 DANH SÁCH KHÓA HỌC ĐÃ XÓA</h3>
+    <a href="/me/stored/courses" style="font-size: 20px" class="btn btn-success">🔙Quay lại danh sách khóa học</a>
     <table class="table mt-4">
     <thead>
         <tr>
@@ -8,7 +8,7 @@
             <th scope="col">Tên khóa học</th>
             <th scope="col">Trình độ</th>
             <th scope="col">Thời gian học</th>
-            <th scope="col" colspan="3">Thời gian tạo</th>
+            <th scope="col" colspan="3">Thời gian xóa</th>
         </tr>
     </thead>
         
@@ -18,7 +18,7 @@
             <td>{{this.name}}</td>
             <td>{{this.level}}</td>                         
             <td>{{this.totalTime}}</td>
-            <td>{{this.createdAt}}</td>
+            <td>{{this.deletedAt}}</td>
             <td>
                 <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi phục</a>
             </td>

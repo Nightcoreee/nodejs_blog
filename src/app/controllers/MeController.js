@@ -4,10 +4,11 @@ const { multipleMongooseToObject } = require('../../util/mongoose');
 class MeController {
     // [GET] /me/stored-courses
     storedCourses(req, res, next) {
-        Course.find({})
-            .then((courses) =>
+        Promise.all([Course.find({}), Course.countDocumentsDeleted()]) //tinh so luong
+            .then(([courses, deletedCount]) =>
                 res.render('me/stored_courses', {
                     courses: multipleMongooseToObject(courses),
+                    deletedCount,
                 }),
             )
             .catch(next);
