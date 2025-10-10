@@ -1,4 +1,4 @@
-<div class="mt-4">
+<form class="mt-4" name="container-form" method="POST" action="/courses/handle-form-actions">
     <h3 class="text-center">📖 KHÓA HỌC CỦA TÔI</h3>
     <div class="d-flex justify-content-between align-items-center mb-3">
       <a href="/courses/create" class="btn btn-success" style="font-size: 20px">
@@ -12,19 +12,19 @@
 
     <div class="mt-4 d-flex align-items-center">
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
+        <input class="form-check-input" type="checkbox" value="" id="checkAll">
+        <label class="form-check-label" for="checkAll">
           Chọn tất cả
         </label>
     </div>
-      <select class="custom-select mr-sm-2 check-select-all-options" id="inlineFormCustomSelect">
-          <option selected>Chọn chức năng</option>
+      <select class="custom-select mr-sm-2 check-select-all-options" name="action" required>
+          <option value="">Chọn chức năng</option>
           <option value="update">Sửa</option>
           <option value="delete">Xóa</option>
-          <option value="3">Three</option>
+          <option value="add">Thêm</option>
       </select>
 
-      <button class="btn btn-primary btn-sm disabled">Thực hiện</button>
+      <button class="btn btn-primary btn-sm check-all-sub-btn disabled" style="font-size: 19px">Thực hiện</button>
     </div>
 
     <table class="table mt-4">
@@ -34,7 +34,7 @@
             <th scope="col">Tên khóa học</th>
             <th scope="col">Trình độ</th>
             <th scope="col">Thời gian học</th>
-            <th scope="col" colspan="3">Thời gian tạo</th>
+            <th scope="col" colspan="4">Thời gian tạo</th>
         </tr>
     </thead>
         
@@ -42,7 +42,7 @@
         <tr>
             <td>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{this._id}}">
+                <input class="form-check-input" type="checkbox" value="{{this._id}}" name="courseIds[]">
               </div>
             </td>
             <th scope="row">{{sum @index 1}}</th>
@@ -66,7 +66,7 @@
         {{/each}}
     </tbody>
 </table>
-</div>
+</form>
 
 
 
@@ -99,6 +99,10 @@
         var courseId;
         var deleteButton = document.getElementById('btn-delete-course');
         var deleteForm = document.forms['delete-course-form'];
+        var checkboxAll = $('#checkAll');
+        var courseItemCheckboxes = $('input[name="courseIds[]"]');
+        var checkAllSubmitButton = $('.check-all-sub-btn');
+        var containerForm = document.forms['container-form'];
 
         $('#delete-course-modal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -109,5 +113,36 @@
             deleteForm.action = '/courses/' + courseId + '?_method=DELETE';
             deleteForm.submit();
         }
+
+        // Handle "Select All" checkbox functionality
+        checkboxAll.on('change', function() {
+            var isChecked = $(this).is(':checked');
+            courseItemCheckboxes.prop('checked', isChecked);
+            renderCheckAllSubmitButton();
+        });
+
+        courseItemCheckboxes.change(function() {
+            var isChecked = courseItemCheckboxes.length === $('input[name="courseIds[]"]:checked').length;
+            checkboxAll.prop('checked', isChecked);
+            renderCheckAllSubmitButton();
+        });
+
+
+        checkAllSubmitButton.on('submit', fucntion (e) {
+          var isSubmitable = !$(this).hasClass('disabled');
+          if (!isSubmitable) {
+            e.preventDefault();
+          }
+        });
+
+
+        function renderCheckAllSubmitButton() {
+            var CountChecked = $('input[name="courseIds[]"]:checked').length;
+            if (CountChecked > 0) {
+                checkAllSubmitButton.removeClass('disabled');
+            } else {
+                checkAllSubmitButton.addClass('disabled');
+            }             
+        } 
 });
 </script>

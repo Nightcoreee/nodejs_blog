@@ -71,6 +71,19 @@ class CourseController {
             )
             .then(() => res.redirect('/me/stored/courses'));
     }
+
+    // [POST] /courses/handle-form-actions
+    handleFormActions(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Course.delete({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            default:
+                res.json({ message: 'Hành động không hợp lệ!' });
+        }
+    }
 }
 
 module.exports = new CourseController();
