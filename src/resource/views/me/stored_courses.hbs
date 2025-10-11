@@ -19,9 +19,7 @@
     </div>
       <select class="custom-select mr-sm-2 check-select-all-options" name="action" required>
           <option value="">Chọn chức năng</option>
-          <option value="update">Sửa</option>
           <option value="delete">Xóa</option>
-          <option value="add">Thêm</option>
       </select>
 
       <button class="btn btn-primary btn-sm check-all-sub-btn disabled" style="font-size: 19px">Thực hiện</button>
@@ -128,7 +126,7 @@
         });
 
 
-        checkAllSubmitButton.on('submit', fucntion (e) {
+        checkAllSubmitButton.on('submit', function (e) {
           var isSubmitable = !$(this).hasClass('disabled');
           if (!isSubmitable) {
             e.preventDefault();
