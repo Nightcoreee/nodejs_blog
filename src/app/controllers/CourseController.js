@@ -89,13 +89,13 @@ class CourseController {
                             { deleted: false, deletedAt: null },
                         ),
                     )
-                    .then(() => res.redirect('/me/stored/courses'))
+                    .then(() => res.redirect('/me/trash/courses'))
                     .catch(next);
                 break;
 
             case 'forceDelete':
                 Course.deleteMany({ _id: { $in: req.body.courseIds } })
-                    .then(() => res.redirect('/me/stored/courses'))
+                    .then(() => res.redirect('/me/trash/courses'))
                     .catch(next);
                 break;
 
