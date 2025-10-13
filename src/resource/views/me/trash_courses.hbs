@@ -21,6 +21,7 @@
     <table class="table mt-4">
     <thead>
         <tr>
+            <th scope="col">#</th>
             <th scope="col">📋</th>
             <th scope="col">Tên khóa học</th>
             <th scope="col">Trình độ</th>
@@ -28,7 +29,7 @@
             <th scope="col" colspan="4">Thời gian xóa</th>
         </tr>
     </thead>
-        
+        <tbody>
         {{#each courses}}
         <tr>
             <td>
@@ -50,8 +51,8 @@
         </tr>
         {{else}}
         <tr>
-            <td colspan="7" class="text-center">Thùng rác trống
-                <a href="/me/stored/courses">Danh sách khóa học</a>
+            <td colspan="7" class="text-center">Thùng rác trống.
+                <a href="/me/stored/courses"> Quay lại danh sách khóa học</a>
             </td>
         </tr>
         {{/each}}

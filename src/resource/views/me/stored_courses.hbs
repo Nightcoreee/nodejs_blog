@@ -28,14 +28,25 @@
     <table class="table mt-4">
     <thead>
         <tr>
+            <th scope="col">#</th>
             <th scope="col">📋</th>
-            <th scope="col">Tên khóa học</th>
-            <th scope="col">Trình độ</th>
-            <th scope="col">Thời gian học</th>
-            <th scope="col" colspan="4">Thời gian tạo</th>
+            <th scope="col">
+              Tên khóa học 
+              {{{sortable 'name' _sort}}}
+            </th>
+
+            <th scope="col">Trình độ 
+              {{{sortable 'level' _sort}}}</th>
+
+            <th scope="col">Thời gian học 
+              {{{sortable 'totalTime' _sort}}}</th>
+
+            <th scope="col" colspan="4">Thời gian tạo
+              {{{sortable 'createdAt' _sort}}}
+            </th>
         </tr>
     </thead>
-        
+        <tbody>
         {{#each courses}}
         <tr>
             <td>
@@ -57,7 +68,7 @@
         </tr>
         {{else}}
         <tr>
-            <td colspan="7" class="text-center">Chưa có khóa học nào
+            <td colspan="8" class="text-center">Chưa có khóa học nào
               <a href="/courses/create">Thêm khóa học mới</a>
             </td>
         </tr>
@@ -128,7 +139,7 @@
 
 
         containerForm.on('submit', function (e) {
-          var isSubmitable = !checkAllSubmitButton.hasClass('disabled');
+          var isSubmitable = !checkAllSubmitButton.is(':disabled');
           if (!isSubmitable) {
             e.preventDefault();
           }
