@@ -17,6 +17,7 @@
           Chọn tất cả
         </label>
     </div>
+    
       <select class="custom-select mr-sm-2 check-select-all-options" name="action" required>
           <option value="">Chọn chức năng</option>
           <option value="delete">Xóa</option>
@@ -29,22 +30,42 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">📋</th>
-            <th scope="col">
-              Tên khóa học 
-              {{{sortable 'name' _sort}}}
-            </th>
 
-            <th scope="col">Trình độ 
-              {{{sortable 'level' _sort}}}</th>
+        <th scope="col" class="align-middle">
+          <div class="d-flex align-items-center">
+            <span>ID</span>
+            <span class="ml-1">{{{sortable '_id' _sort}}}</span>
+          </div>
+        </th>
 
-            <th scope="col">Thời gian học 
-              {{{sortable 'totalTime' _sort}}}</th>
+        <th scope="col" class="align-middle">
+          <div class="d-flex align-items-center">
+            <span>Tên khóa học</span>
+            <span class="ml-1">{{{sortable 'name' _sort}}}</span>
+          </div>
+        </th>
 
-            <th scope="col" colspan="4">Thời gian tạo
-              {{{sortable 'createdAt' _sort}}}
-            </th>
-        </tr>
+        <th scope="col" class="align-middle">
+          <div class="d-flex align-items-center">
+            <span>Trình độ</span>
+            <span class="ml-1">{{{sortable 'level' _sort}}}</span>
+          </div>
+        </th>
+
+        <th scope="col" class="align-middle">
+          <div class="d-flex align-items-center">
+            <span>Thời gian học</span>
+            <span class="ml-1">{{{sortable 'totalTime' _sort}}}</span>
+          </div>
+        </th>
+
+        <th scope="col" class="align-middle" colspan="4">
+          <div class="d-flex align-items-center">
+            <span>Thời gian tạo</span>
+            <span class="ml-1">{{{sortable 'createdAt' _sort}}}</span>
+          </div>
+        </th>
+      </tr>
     </thead>
         <tbody>
         {{#each courses}}
@@ -54,7 +75,7 @@
                 <input class="form-check-input" type="checkbox" value="{{this._id}}" name="courseIds[]">
               </div>
             </td>
-            <th scope="row">{{sum @index 1}}</th>
+            <th scope="row">{{this._id}}</th>
             <td>{{this.name}}</td>
             <td>{{this.level}}</td>                         
             <td>{{this.totalTime}}</td>
@@ -90,7 +111,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Bạn có chắc chắn muốn xóa khóa học này không?
+        Bạn có chắc chắn muốn xóa khóa học này không ?
       </div>
       <div class="modal-footer">
         <button type="button" id="btn-delete-course" class="btn btn-danger">Xóa bỏ</button>
